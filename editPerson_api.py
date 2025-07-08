@@ -161,7 +161,7 @@ def generate_variation_call(PARAM_DICTIONARY, TOKEN_DICTIONARY):
 
     data = {**data, 'keyword': json.dumps({'location': KEYWORD})}
 
-    OPTIONS_DICT = {'eraseid_gpu': True} # TODO: add other options
+    OPTIONS_DICT = {} # TODO: add other options
 
     SEED = PARAM_DICTIONARY.get('SEED')
 
