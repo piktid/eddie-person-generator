@@ -22,6 +22,9 @@ if __name__ == '__main__':
     parser.add_argument('--keyword', help='Generation keyword', type=str, default=None)
     parser.add_argument('--seed', help='Generation seed', type=int, default=randint(0, 100000))
 
+    # API parameters
+    parser.add_argument('--use_v2', help='Use v2 workflow (upload/v2, S3, new notifications)', action='store_true', default=False)
+
     args = parser.parse_args()
 
     # be sure to export your email and psw as environmental variables
@@ -36,11 +39,13 @@ if __name__ == '__main__':
     KEYWORD = args.keyword
     SEED = args.seed
 
+    # API parameters
+    USE_V2 = args.use_v2
+
     # Image parameters
     INPUT_URL = args.input_url 
     INPUT_PATH = args.input_filepath
     OUTPUT_PATH = args.output_filepath
-
 
     if INPUT_PATH is not None:
         if os.path.exists(INPUT_PATH):
@@ -70,8 +75,9 @@ if __name__ == '__main__':
             'SEED': SEED
         }
 
-    # run different process based on batch variation or not
+    workflow_name = "v2" if USE_V2 else "v1"
+    print(f'Using {workflow_name} workflow')
 
-    response, final_path, ID_IMAGE = variate_person(PARAM_DICTIONARY, TOKEN_DICTIONARY) 
+    response, final_path, ID_IMAGE = variate_person(PARAM_DICTIONARY, TOKEN_DICTIONARY, use_v2=USE_V2) 
     
-    print(f'Response: {response}, final_path: {final_path}, ID_IMAGE: {ID_IMAGE}')  
+    print(f'Response: {response}, final_path: {final_path}, ID_IMAGE: {ID_IMAGE}')

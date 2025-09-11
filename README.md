@@ -5,7 +5,7 @@
 </p>
 
 
-# Eddie - Person Generator 1.0.0
+# Eddie - Person Generator 1.1.0
 [![Official Website](https://img.shields.io/badge/Official%20Website-piktid.com-blue?style=flat&logo=world&logoColor=white)](https://piktid.com)
 [![Discord Follow](https://dcbadge.vercel.app/api/server/FJU39e9Z4P?style=flat)](https://discord.com/invite/FJU39e9Z4P)
 
@@ -25,6 +25,7 @@ Eddie works by transforming people based on geographical regions. The following 
 
 ```
 - Africa
+- Central Africa
 - Middle East
 - East Asia
 - North Europe
@@ -71,6 +72,20 @@ You can customize the generation parameters with the following options:
 $ python3 main.py --input_filepath '/path/to/your/image.jpg' --id_person 0 --keyword 'Middle East' --seed 12345 --output_filepath '/path/to/save/output.jpg'
 ```
 
+## API Workflows
+
+Eddie supports two API workflows:
+
+- **v1 (default)**: Standard workflow for image processing
+- **v2**: Enhanced workflow with improved upload handling, storage, and new notifications
+
+To use the v2 workflow, add the `--use_v2` flag:
+
+```bash
+# Using v2 workflow
+$ python3 main.py --input_filepath '/path/to/your/image.jpg' --keyword 'East Asia' --use_v2
+```
+
 ## Available Parameters
 
 - **input_url**: URL of the image to process
@@ -79,6 +94,7 @@ $ python3 main.py --input_filepath '/path/to/your/image.jpg' --id_person 0 --key
 - **id_person**: Index of the person to modify in the image (default: 0)
 - **keyword**: Geographical location to use for variation (REQUIRED - see Available Keywords section)
 - **seed**: Random seed for reproducible results (default: random)
+- **use_v2**: Use v2 workflow with enhanced features (optional flag)
 
 ## Contact
 office@piktid.com
